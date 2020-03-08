@@ -7,6 +7,7 @@ services:
       - POSTGRES_USER=restapi
       - POSTGRES_PASSWORD=restapi
       - POSTGRES_DB=restapi_dev
+      - PGDATA=/var/lib/postgresql/data/das
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 

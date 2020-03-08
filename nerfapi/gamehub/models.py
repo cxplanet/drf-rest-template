@@ -14,3 +14,7 @@ class Player(models.Model):
     # XXX: only use cascade if you want to delte all the players when the Team is deleted
     # https://stackoverflow.com/questions/38388423/what-does-on-delete-do-on-django-models
     team = models.ForeignKey(Team, on_delete=models.CASCADE) 
+
+    @property
+    def team_name(self):
+        return self.team.name
