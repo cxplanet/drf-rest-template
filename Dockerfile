@@ -17,9 +17,11 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt /rest-api-service/requirements.txt
 RUN pip install -r requirements.txt
 
-# copy project
+# copy wait script and project
+COPY ./wait_to_start.sh /rest-api-service/wait_to_start.sh
 COPY . /rest-api-service
 
 EXPOSE 8000
 
-CMD gunicorn -b :8000 nerfapi.wsgi
+#CMD gunicorn -b :8000 nerfapi.wsgi
+ENTRYPOINT ["/rest-api-service/wait_to_start.sh"]
