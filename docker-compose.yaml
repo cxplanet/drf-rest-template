@@ -13,6 +13,8 @@ services:
   rest-api:
     build: .
     command: gunicorn nerfapi.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/rest-api-service/staticfiles
     env_file:
       - ./.env.develop
     expose:
@@ -22,6 +24,8 @@ services:
 
   nginx:
     build: ./docker/nginx
+    volumes:
+      - static_volume:/rest-api-service/staticfiles
     ports:
       - 80:80
     depends_on:
@@ -29,4 +33,5 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
 

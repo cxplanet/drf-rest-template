@@ -2,6 +2,8 @@
 FROM python:3.8.0-alpine
 
 # set work directory
+RUN mkdir /rest-api-service
+RUN mkdir /rest-api-service/staticfiles
 WORKDIR /rest-api-service
 
 # set environment variables
