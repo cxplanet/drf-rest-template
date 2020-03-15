@@ -12,6 +12,14 @@ class StatusView(APIView):
         content = {'status': 'ok'}
         return Response(content)
 
+class GameViewset(viewsets.ModelViewSet):
+    queryset = models.Game.objects.all()
+    serializer_class = serializers.GameSerializer
+
+class GamePlayViewset(viewsets.ModelViewSet):
+    queryset = models.GamePlay.objects.all()
+    serializer_class = serializers.GamePlaySerializer
+
 class PlayerViewset(viewsets.ModelViewSet):
     queryset = models.Player.objects.all()
     serializer_class = serializers.PlayerSerializer
